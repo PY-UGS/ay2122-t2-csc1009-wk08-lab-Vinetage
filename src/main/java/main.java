@@ -25,21 +25,26 @@ public class main
         //Default Circle Print
         CircleWithException circle = new CircleWithException();
         System.out.println("This is Question 01 of Week 08 Lab");
-        System.out.print("Enter a radius: ");
-        double rad = 0;
-        try
+
+        while(!circle.done)
         {
-            //Try to input radius
-            rad = input.nextDouble();
-            circle.setRadius(rad);
-            System.out.println("Area is: " + circle.getArea());
+            System.out.print("Enter a radius: ");
+            double rad = 0;
+            try
+            {
+                //Try to input radius
+                rad = input.nextDouble();
+                circle.setRadius(rad);
+                System.out.println("Area is: " + circle.getArea());
+            }
+            catch (java.util.InputMismatchException | IllegalArgumentException e)  //If input does not match datatype
+            {
+                //Clear input buffer
+                input.nextLine();
+                System.out.println(e);
+            }
         }
-        catch (java.util.InputMismatchException e)  //If input does not match datatype
-        {
-            //Clear input buffer
-            input.nextLine();
-            System.out.println("Input not numerical: " + e);
-        }
+
     }
     //endregion
 
